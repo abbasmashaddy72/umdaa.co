@@ -1,0 +1,2 @@
+[11-Mar-2021 19:21:24 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer.phar/src/Composer/DependencyResolver/RuleSetGenerator.php on line 129
+[11-Mar-2021 19:22:52 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 8192 bytes) in phar:///usr/local/bin/composer.phar/src/Composer/DependencyResolver/RuleSetGenerator.php on line 64
