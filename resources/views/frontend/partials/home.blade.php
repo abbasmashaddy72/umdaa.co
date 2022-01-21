@@ -60,7 +60,7 @@
         <div class="container">
             @foreach ($all_header_slider as $data)
                 <div class="row">
-                    <div class="col-lg-8 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <div class="order-2 pt-5 col-lg-8 pt-lg-0 order-lg-1 d-flex flex-column justify-content-center">
                         @if (!empty($data->title))
                             <h1>
                                 {{ $data->title }}
@@ -205,7 +205,8 @@
                             <i class="fas fa-diagnoses" aria-hidden="true"></i>
                         </div>
                         <div class="content">
-                            <div class="count-wrap"><span class="count-num">{{ $app_count }}</span>{{ '+' }}
+                            <div class="count-wrap"><span
+                                    class="count-num">{{ $app_count }}</span>{{ '+' }}
                             </div>
                             <h4 class="title">{{ 'No. of Consultations' }}</h4>
                         </div>
@@ -214,86 +215,40 @@
             </div>
         </div>
     </div>
-    <section class="faq-area bg-image padding-50">
+    <section class="we-area-experience">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="left-content-area">
-                        <div class="section-title desktop-left tablet-center mobile-center">
-                            <h2 class="title">{{ get_static_option('home_page_01_faq_area_title') }}</h2>
-                            <p>{{ get_static_option('home_page_01_faq_area_description') }}</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 margin-top-40">
+                    @if (!empty(get_static_option('home_01_key_feature_section_title')))
+                        <div class="section-title desktop-center">
+                            <h2 class="title">{{ get_static_option('home_01_key_feature_section_title') }}</h2>
+                            @if (!empty(get_static_option('home_01_key_feature_section_description')))
+                                <p>{{ get_static_option('home_01_key_feature_section_description') }}</p>
+                            @endif
                         </div>
-                        <div class="accordion-wrapper">
-                            @php $rand_number = rand(9999,99999999); @endphp
-                            <div id="accordion_{{ $rand_number }}">
-                                @foreach ($all_faq as $key => $data)
-                                    @php
-                                        $aria_expanded = 'false';
-                                        if ($data->is_open == 'on') {
-                                            $aria_expanded = 'true';
-                                        }
-                                    @endphp
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne_{{ $key }}">
-                                            <h5 class="mb-0">
-                                                <a data-toggle="collapse" data-target="#collapseOne_{{ $key }}"
-                                                    role="button" aria-expanded="{{ $aria_expanded }}"
-                                                    aria-controls="collapseOne_{{ $key }}">
-                                                    {{ $data->title }}
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne_{{ $key }}" class="collapse @if ($data->is_open == 'on') show @endif
-                                            "
-                                            aria-labelledby="headingOne_{{ $key }}"
-                                            data-parent="#accordion_{{ $rand_number }}">
-                                            <div class="card-body">
-                                                {{ $data->description }}
-                                            </div>
-                                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($all_key_features as $data)
+                    <div class="col-lg-4 col-md-6 margin-bottom-50">
+                        <div class="single-experience-item">
+                            <div class="thumb">
+                                <div class="hover">
+                                    <div class="icon">
+                                        <i class="{{ $data->icon }}"></i>
                                     </div>
-                                @endforeach
+                                    <div class="content">
+                                        <h4 class="title">{{ $data->title }}</h4>
+                                        <p>{{ $data->description }}</p>
+                                        <button class="float-right btn btn-colour-1"><a
+                                                href="{{ route('frontend.dynamic.page', ['id' => $data->id, 'any' => Str::slug($data->title)]) }}">more..</a></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="right-content-area">
-                        <div class="request-call">
-                            <h4 class="title">{{ get_static_option('home_page_01_faq_area_form_title') }}</h4>
-                            <p>{{ get_static_option('home_page_01_faq_area_form_description') }}</p>
-                            @include('backend.partials.message')
-                            @if ($errors->any())
-                                <ul class="alert alert-danger">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                            <form action="{{ route('frontend.call.back.message') }}"
-                                class="request-call-form margin-top-60" enctype="multipart/form-data" method="post">
-                                @csrf
-                                @php
-                                    $form_fields = json_decode(get_static_option('call_back_page_form_fields'));
-                                    $select_index = 0;
-                                    $options = [];
-                                @endphp
-                                @foreach ($form_fields->field_type as $key => $value)
-                                    @if (!empty($value))
-                                        @if ($value == 'select') @php $options = explode(';',$form_fields->select_options[$select_index]);@endphp
-                                        @endif
-                                        @php $required = isset($form_fields->field_required->$key) ? $form_fields->field_required->$key : '' @endphp
-                                        @php $mimes = isset($form_fields->mimes_type->$key) ? $form_fields->mimes_type->$key : '' @endphp
-                                        {!! get_field_by_type($value, $form_fields->field_name[$key], $form_fields->field_placeholder[$key], $options, $required, $mimes) !!}
-                                        @if ($value == 'select') @php $select_index++@endphp
-                                        @endif
-                                    @endif
-                                @endforeach
-                                <button type="submit" class="submit-btn white">{{ 'Submit' }}</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -329,6 +284,5 @@
                 height: $(window).height() + "px"
             });
         });
-
     </script>
 @endsection

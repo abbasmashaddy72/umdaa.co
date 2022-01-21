@@ -9,46 +9,41 @@
                                 <?php
                                 $site_logo = get_attachment_image_by_id(get_static_option('site_logo'), 'full', false);
                                 ?>
-                                <?php if (!empty($site_logo)) : ?>
-                                    <img src="<?php echo e($site_logo['img_url']); ?>" alt="">
+                                <?php if(!empty($site_logo)): ?>
+                                <img src="<?php echo e($site_logo['img_url']); ?>" alt="">
                                 <?php endif; ?>
                             </a>
                             <p><?php echo e(get_static_option('about_widget_description')); ?></p>
                             <ul class="social-icons">
-                                <?php if (
-                                    !empty(get_static_option('about_widget_social_icon_one')) &&
-                                    !empty(get_static_option('about_widget_social_icon_one_url'))
-                                ) : ?>
-                                    <li><a href="<?php echo e(get_static_option('about_widget_social_icon_one_url')); ?>"><i class="<?php echo e(get_static_option('about_widget_social_icon_one')); ?>"></i></a>
-                                    </li>
+                                <?php if(!empty(get_static_option('about_widget_social_icon_one')) &&
+                                !empty(get_static_option('about_widget_social_icon_one_url'))): ?>
+                                <li><a href="<?php echo e(get_static_option('about_widget_social_icon_one_url')); ?>"><i
+                                            class="<?php echo e(get_static_option('about_widget_social_icon_one')); ?>"></i></a>
+                                </li>
                                 <?php endif; ?>
-                                <?php if (
-                                    !empty(get_static_option('about_widget_social_icon_two')) &&
-                                    !empty(get_static_option('about_widget_social_icon_two_url'))
-                                ) : ?>
-                                    <li><a href="<?php echo e(get_static_option('about_widget_social_icon_two_url')); ?>"><i class="<?php echo e(get_static_option('about_widget_social_icon_two')); ?>"></i></a>
-                                    </li>
+                                <?php if(!empty(get_static_option('about_widget_social_icon_two')) &&
+                                !empty(get_static_option('about_widget_social_icon_two_url'))): ?>
+                                <li><a href="<?php echo e(get_static_option('about_widget_social_icon_two_url')); ?>"><i
+                                            class="<?php echo e(get_static_option('about_widget_social_icon_two')); ?>"></i></a>
+                                </li>
                                 <?php endif; ?>
-                                <?php if (
-                                    !empty(get_static_option('about_widget_social_icon_three')) &&
-                                    !empty(get_static_option('about_widget_social_icon_three_url'))
-                                ) : ?>
-                                    <li><a href="<?php echo e(get_static_option('about_widget_social_icon_three_url')); ?>"><i class="<?php echo e(get_static_option('about_widget_social_icon_three')); ?>"></i></a>
-                                    </li>
+                                <?php if(!empty(get_static_option('about_widget_social_icon_three')) &&
+                                !empty(get_static_option('about_widget_social_icon_three_url'))): ?>
+                                <li><a href="<?php echo e(get_static_option('about_widget_social_icon_three_url')); ?>"><i
+                                            class="<?php echo e(get_static_option('about_widget_social_icon_three')); ?>"></i></a>
+                                </li>
                                 <?php endif; ?>
-                                <?php if (
-                                    !empty(get_static_option('about_widget_social_icon_four')) &&
-                                    !empty(get_static_option('about_widget_social_icon_four_url'))
-                                ) : ?>
-                                    <li><a href="<?php echo e(get_static_option('about_widget_social_icon_four_url')); ?>"><i class="<?php echo e(get_static_option('about_widget_social_icon_four')); ?>"></i></a>
-                                    </li>
+                                <?php if(!empty(get_static_option('about_widget_social_icon_four')) &&
+                                !empty(get_static_option('about_widget_social_icon_four_url'))): ?>
+                                <li><a href="<?php echo e(get_static_option('about_widget_social_icon_four_url')); ?>"><i
+                                            class="<?php echo e(get_static_option('about_widget_social_icon_four')); ?>"></i></a>
+                                </li>
                                 <?php endif; ?>
-                                <?php if (
-                                    !empty(get_static_option('about_widget_social_icon_five')) &&
-                                    !empty(get_static_option('about_widget_social_icon_five_url'))
-                                ) : ?>
-                                    <li><a href="<?php echo e(get_static_option('about_widget_social_icon_five_url')); ?>"><i class="<?php echo e(get_static_option('about_widget_social_icon_five')); ?>"></i></a>
-                                    </li>
+                                <?php if(!empty(get_static_option('about_widget_social_icon_five')) &&
+                                !empty(get_static_option('about_widget_social_icon_five_url'))): ?>
+                                <li><a href="<?php echo e(get_static_option('about_widget_social_icon_five_url')); ?>"><i
+                                            class="<?php echo e(get_static_option('about_widget_social_icon_five')); ?>"></i></a>
+                                </li>
                                 <?php endif; ?>
                             </ul>
                         </div>
@@ -61,15 +56,11 @@
                             <?php
                             $useful_links_arr = json_decode($all_usefull_links->content);
                             ?>
-                            <?php $__currentLoopData = $useful_links_arr;
-                            $__env->addLoop($__currentLoopData);
-                            foreach ($__currentLoopData as $data) : $__env->incrementLoopIndices();
-                                $loop = $__env->getLastLoop(); ?>
-                                <li><a href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
-                                </li>
-                            <?php endforeach;
-                            $__env->popLoop();
-                            $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $useful_links_arr; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a
+                                    href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
+                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
@@ -80,15 +71,11 @@
                             <?php
                             $useful_links_arr = json_decode($all_important_links->content);
                             ?>
-                            <?php $__currentLoopData = $useful_links_arr;
-                            $__env->addLoop($__currentLoopData);
-                            foreach ($__currentLoopData as $data) : $__env->incrementLoopIndices();
-                                $loop = $__env->getLastLoop(); ?>
-                                <li><a href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
-                                </li>
-                            <?php endforeach;
-                            $__env->popLoop();
-                            $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $useful_links_arr; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a
+                                    href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
+                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
@@ -106,21 +93,28 @@
                                 <a href=<?php echo e('mailto:info@umdaa.co?Subject=Thanks%20for%20Connecting%20With%20Us'); ?>>Mail
                                     Us</a>
                             </li>
-                            <?php if (!empty($other_links->content)) : ?>
-                                <?php
-                                $useful_links_arr = json_decode($other_links->content);
-                                ?>
-                                <?php $__currentLoopData = $useful_links_arr;
-                                $__env->addLoop($__currentLoopData);
-                                foreach ($__currentLoopData as $data) : $__env->incrementLoopIndices();
-                                    $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
-                                    </li>
-                                <?php endforeach;
-                                $__env->popLoop();
-                                $loop = $__env->getLastLoop(); ?>
+                            <?php if(!empty($other_links->content)): ?>
+                            <?php
+                            $useful_links_arr = json_decode($other_links->content);
+                            ?>
+                            <?php $__currentLoopData = $useful_links_arr; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a
+                                    href="<?php echo e(str_replace('[url]', url('/'), $data->menuUrl)); ?>"><?php echo e($data->menuTitle); ?></a>
+                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-area-inner">
+                        If you like to get notifications for these type of blogs <a data-toggle="modal" data-target="#newslettermodal" style="cursor: pointer;">Click Here</a>.
                     </div>
                 </div>
             </div>
@@ -143,7 +137,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -154,14 +149,41 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo e(route('frontend.team.search')); ?>" method="get" class="search-form example">
-                        <input type="text" class="form-control" name="search" placeholder="<?php echo e(__('Search Doctors')); ?>" required>
+                        <input type="text" class="form-control" name="search" placeholder="<?php echo e(__('Search Doctors')); ?>"
+                            required>
                         <button class="submit-btn" type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo e(route('frontend.blog.search')); ?>" method="get" class="search-form example">
-                        <input type="text" class="form-control" name="search" placeholder="<?php echo e(__('Search Blogs')); ?>" required>
+                        <input type="text" class="form-control" name="search" placeholder="<?php echo e(__('Search Blogs')); ?>"
+                            required>
                         <button class="submit-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="newslettermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Please Enter Email to Subscribe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo e(route('frontend.subscribe.newsletter')); ?>" method="post" class="search-form example">
+                        <?php echo csrf_field(); ?>
+                        <div class="input-group mb-3">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address" required>
+                            <div class="input-group-append">
+                                <button class="submit-btn" style="width: fit-content;" type="submit">Subscribe</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer"></div>
@@ -176,31 +198,29 @@
 <div id="whatsdiv">
 </div>
 <style>
-    @media only screen and (max-width: 600px) {
+    @media  only screen and (max-width: 600px) {
         #whatsdiv {
             left: 15px !important;
             right: auto !important;
         }
     }
 </style>
-<?php if (!empty(get_static_option('popup_enable_status') && !empty(get_static_option('popup_selected_id')))) : ?>
-    <?php
-    $popup_id = get_static_option('popup_selected_id');
-    $popup_details = \App\PopupBuilder::find($popup_id);
-    if (empty($popup_details)) {
-        return;
-    }
-    $website_url = url('/');
-    $popup_class = '';
-    if ($popup_details->type == 'notice') {
-        $popup_class = 'notice-modal';
-    } elseif ($popup_details->type == 'only_image') {
-        $popup_class = 'only-image-modal';
-    } else {
-        $popup_class = 'discount-modal';
-    }
-    ?>
-    <?php echo $__env->make('frontend.partials.popup', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php if(!empty(get_static_option('popup_enable_status') && !empty(get_static_option('popup_selected_id')))): ?>
+<?php
+$popup_id = get_static_option('popup_selected_id');
+$popup_details = \App\PopupBuilder::find($popup_id);
+if(empty($popup_details)) {return;}
+$website_url = url('/');
+$popup_class = '';
+if ($popup_details->type == 'notice'){
+$popup_class = 'notice-modal';
+}elseif($popup_details->type == 'only_image'){
+$popup_class = 'only-image-modal';
+}else{
+$popup_class = 'discount-modal';
+}
+?>
+<?php echo $__env->make('frontend.partials.popup', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php endif; ?>
 <!-- jquery -->
 <script src="<?php echo e(asset('assets/frontend/js/jquery-3.4.1.min.js')); ?>"></script>
@@ -217,35 +237,35 @@
 <script src="<?php echo e(asset('assets/frontend/js/wow.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/frontend/js/jquery.ihavecookies.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/frontend/js/main.js')); ?>"></script>
-<?php if (!empty(get_static_option('popup_enable_status') && !empty(get_static_option('popup_selected_id')))) : ?>
-    <script src="<?php echo e(asset('assets/frontend/js/countdown.jquery.js')); ?>"></script>
+<?php if(!empty(get_static_option('popup_enable_status') && !empty(get_static_option('popup_selected_id')))): ?>
+<script src="<?php echo e(asset('assets/frontend/js/countdown.jquery.js')); ?>"></script>
 <?php endif; ?>
 
 <?php echo $__env->yieldContent('scripts'); ?>
 
-<?php if (!empty(get_static_option('site_gdpr_cookie_enabled'))) : ?>
-    <?php $gdpr_cookie_link = str_replace('{url}', url('/'), get_static_option('site_gdpr_cookie_more_info_link')) ?>
-    <script>
-        $(document).ready(function() {
-            $('body').ihavecookies({
-                title: "<?php echo e(get_static_option('site_gdpr_cookie_title')); ?>",
-                message: "<?php echo e(get_static_option('site_gdpr_cookie_message')); ?>",
-                expires: "<?php echo e(get_static_option('site_gdpr_cookie_expire')); ?>",
-                link: "<?php echo e($gdpr_cookie_link); ?>",
-                delay: "<?php echo e(get_static_option('site_gdpr_cookie_delay')); ?>",
-                moreInfoLabel: "<?php echo e(get_static_option('site_gdpr_cookie_more_info_label')); ?>",
-                acceptBtnLabel: "<?php echo e(get_static_option('site_gdpr_cookie_accept_button_label')); ?>"
-            });
-            $('body').on('click', '#gdpr-cookie-close', function(e) {
-                e.preventDefault();
-                $(this).parent().remove();
-            });
+<?php if(!empty(get_static_option('site_gdpr_cookie_enabled'))): ?>
+<?php $gdpr_cookie_link = str_replace('{url}',url('/'),get_static_option('site_gdpr_cookie_more_info_link')) ?>
+<script>
+    $(document).ready(function () {
+        $('body').ihavecookies({
+            title: "<?php echo e(get_static_option('site_gdpr_cookie_title')); ?>",
+            message: "<?php echo e(get_static_option('site_gdpr_cookie_message')); ?>",
+            expires: "<?php echo e(get_static_option('site_gdpr_cookie_expire')); ?>",
+            link: "<?php echo e($gdpr_cookie_link); ?>",
+            delay: "<?php echo e(get_static_option('site_gdpr_cookie_delay')); ?>",
+            moreInfoLabel: "<?php echo e(get_static_option('site_gdpr_cookie_more_info_label')); ?>",
+            acceptBtnLabel: "<?php echo e(get_static_option('site_gdpr_cookie_accept_button_label')); ?>"
         });
-    </script>
+        $('body').on('click', '#gdpr-cookie-close', function (e) {
+            e.preventDefault();
+            $(this).parent().remove();
+        });
+    });
+</script>
 <?php endif; ?>
 <!--Start of Whats App-->
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $('#whatsdiv').floatingWhatsApp({
             phone: "<?php echo e(get_static_option('whats_app_number')); ?>",
             popupMessage: "<?php echo e(get_static_option('whats_app_message')); ?>",
@@ -256,12 +276,13 @@
 </script>
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTV4366" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTV4366" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <!--Lazy Loading-->
 <script>
-    $(function() {
+    $(function () {
         $('.lazy').lazy();
     });
 </script>
@@ -271,9 +292,9 @@
 </script>
 
 <script>
-    (function($) {
+    (function ($) {
         "use strict";
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $('[data-toggle="popover"]').popover();
 
@@ -299,47 +320,46 @@
                 var expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             }
-            <?php if (!empty(get_static_option('popup_enable_status') && !empty(get_static_option(
-                'popup_selected_id'
-            ))) && !empty($popup_details)) : ?>
+            <?php if(!empty(get_static_option('popup_enable_status') && !empty(get_static_option(
+                'popup_selected_id'))) && !empty($popup_details)): ?>
 
-                var delayTime = "<?php echo e(get_static_option('popup_delay_time')); ?>";
-                delayTime = delayTime ? delayTime : 4000;
+            var delayTime = "<?php echo e(get_static_option('popup_delay_time')); ?>";
+            delayTime = delayTime ? delayTime : 4000;
 
-                if (getCookie('nx_popup_show') == '') {
-                    setTimeout(function() {
-                        $('.nx-popup-backdrop').addClass('show');
-                        $('.nx-popup-wrapper').addClass('show');
+            if (getCookie('nx_popup_show') == '') {
+                setTimeout(function () {
+                    $('.nx-popup-backdrop').addClass('show');
+                    $('.nx-popup-wrapper').addClass('show');
 
-                    }, parseInt(delayTime));
-                }
+                }, parseInt(delayTime));
+            }
 
-                $(document).on('click', '.nx-popup-close,.nx-popup-backdrop', function(e) {
-                    e.preventDefault();
-                    $('.nx-modal-content').html('');
-                    $('.nx-popup-backdrop').removeClass('show');
-                    $('.nx-popup-wrapper').removeClass('show');
-                    setCookie('nx_popup_show', 'no', 1);
+            $(document).on('click', '.nx-popup-close,.nx-popup-backdrop', function (e) {
+                e.preventDefault();
+                $('.nx-modal-content').html('');
+                $('.nx-popup-backdrop').removeClass('show');
+                $('.nx-popup-wrapper').removeClass('show');
+                setCookie('nx_popup_show', 'no', 1);
+            });
+
+            var offerTime = "<?php echo e($popup_details->offer_time_end); ?>";
+            var year = offerTime.substr(0, 4);
+            var month = offerTime.substr(5, 2);
+            var day = offerTime.substr(8, 2);
+            if (offerTime) {
+                $('#countdown').countdown({
+                    year: year,
+                    month: month,
+                    day: day,
+                    labels: true,
+                    labelText: {
+                        'days': "<?php echo e(__('days')); ?>",
+                        'hours': "<?php echo e(__('hours')); ?>",
+                        'minutes': "<?php echo e(__('min')); ?>",
+                        'seconds': "<?php echo e(__('sec')); ?>",
+                    }
                 });
-
-                var offerTime = "<?php echo e($popup_details->offer_time_end); ?>";
-                var year = offerTime.substr(0, 4);
-                var month = offerTime.substr(5, 2);
-                var day = offerTime.substr(8, 2);
-                if (offerTime) {
-                    $('#countdown').countdown({
-                        year: year,
-                        month: month,
-                        day: day,
-                        labels: true,
-                        labelText: {
-                            'days': "<?php echo e(__('days')); ?>",
-                            'hours': "<?php echo e(__('hours')); ?>",
-                            'minutes': "<?php echo e(__('min')); ?>",
-                            'seconds': "<?php echo e(__('sec')); ?>",
-                        }
-                    });
-                }
+            }
             <?php endif; ?>
 
         });

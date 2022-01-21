@@ -37,8 +37,13 @@
                                 <div class="single-blog-grid-01 margin-bottom-30">
                                     <div class="thumb">
                                         <?php if($data->article_type == 'video' || $data->article_type == 'Video'): ?>
-                                            <img src="<?php echo e($data->article_image != '' ? $data->article_image : url('assets/uploads/default/' . $data->category->department_name . '.jpg')); ?>"
-                                                style="height:216px; width:100%; object-fit:cover;">
+                                            <?php if(!empty($data->video_image)): ?>
+                                                <img src="<?php echo e('https://clinic.umdaa.co/uploads/thumbnails/' . $data->video_image); ?>"
+                                                    style="height:216px; width:100%; object-fit:cover;">
+                                            <?php else: ?>
+                                                <img src="<?php echo e($data->article_image != '' ? $data->article_image : url('assets/uploads/default/' . $data->category->department_name . '.jpg')); ?>"
+                                                    style="height:216px; width:100%; object-fit:cover;">
+                                            <?php endif; ?>
                                         <?php elseif($data->article_type == 'pdf'): ?>
                                             <img src=<?php echo e(url('assets/uploads/default/' . $data->category->department_name . '.jpg')); ?>
 
@@ -92,7 +97,7 @@
     </section>
     <section class="d-block d-lg-none d-xl-none d-md-none d-xs-block d-sm-block" style="min-height: 75vh;">
         <div id="myCarousel" class="carousel slide" data-interval="false" data-wrap="false">
-            <div class="carousel-inner row w-100 mx-auto" id="post-data">
+            <div class="mx-auto carousel-inner row w-100" id="post-data">
                 <?php echo $__env->make('frontend.pages.blogs.mobile_blog', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">

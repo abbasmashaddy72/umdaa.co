@@ -2,7 +2,11 @@
 @php
 $post_img = null;
 if ($blog_post->article_type == 'video' || $blog_post->article_type == 'Video') {
-    $blog_image = url('assets/uploads/default/thumb/' . $blog_post->category->department_name . '.jpg');
+    if(!empty($blog_post->video_image)) {
+        $blog_image = 'https://clinic.umdaa.co/uploads/thumbnails/'.$blog_post->video_image;
+    } else {
+        $blog_image = url('assets/uploads/default/thumb/' . $blog_post->category->department_name . '.jpg');
+    }
 } elseif ($blog_post->article_type == 'image') {
     $blog_image = $blog_post->posted_url != '' ? 'https://clinic.umdaa.co/uploads/article_images/' . $blog_post->posted_url : url('assets/uploads/default/thumb/' . $blog_post->category->department_name . '.jpg');
 } else {

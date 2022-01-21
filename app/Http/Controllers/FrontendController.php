@@ -64,17 +64,17 @@ class FrontendController extends Controller
         $app_count = DB::table('appointments')->where('status', '=', 'closed')->where('slot_type', '=', 'walkin')->count();
         $all_service = Services::orderBy('id', 'asc')->take(3)->get();
         $all_testimonial = Testimonial::where('profile_image', '!=', '')->where('testimonial', '!=', 'Null')->take(10)->get();
-        $all_faq = Faq::orderBy('id', 'asc')->take(5)->get();
+        $all_key_features = KeyFeatures::get();
 
         return view('frontend.partials.home')->with([
             'all_header_slider' => $all_header_slider,
             'all_service' => $all_service,
             'all_testimonial' => $all_testimonial,
-            'all_faq' => $all_faq,
             'doc_count' => $doc_count,
             'dep_count' => $dep_count,
             'clinic_count' => $clinic_count,
             'app_count' => $app_count,
+            'all_key_features' => $all_key_features
         ]);
     }
 

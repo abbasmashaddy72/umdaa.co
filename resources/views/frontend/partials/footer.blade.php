@@ -114,6 +114,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="copyright-area-inner">
+                        If you like to get notifications for these type of blogs <a data-toggle="modal" data-target="#newslettermodal" style="cursor: pointer;">Click Here</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright-area-inner">
                         @php
                         $footer_text = '{year} {copy} UMDAA Health Care';
                         $footer_text = str_replace('{copy}', '&copy;', $footer_text);
@@ -147,6 +158,31 @@
                         <input type="text" class="form-control" name="search" placeholder="{{ __('Search Blogs') }}"
                             required>
                         <button class="submit-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="newslettermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Please Enter Email to Subscribe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('frontend.subscribe.newsletter') }}" method="post" class="search-form example">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address" required>
+                            <div class="input-group-append">
+                                <button class="submit-btn" style="width: fit-content;" type="submit">Subscribe</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer"></div>

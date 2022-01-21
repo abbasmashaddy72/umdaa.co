@@ -59,7 +59,7 @@
         <div class="container">
             <?php $__currentLoopData = $all_header_slider; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="row">
-                    <div class="col-lg-8 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <div class="order-2 pt-5 col-lg-8 pt-lg-0 order-lg-1 d-flex flex-column justify-content-center">
                         <?php if(!empty($data->title)): ?>
                             <h1>
                                 <?php echo e($data->title); ?>
@@ -207,7 +207,8 @@
                             <i class="fas fa-diagnoses" aria-hidden="true"></i>
                         </div>
                         <div class="content">
-                            <div class="count-wrap"><span class="count-num"><?php echo e($app_count); ?></span><?php echo e('+'); ?>
+                            <div class="count-wrap"><span
+                                    class="count-num"><?php echo e($app_count); ?></span><?php echo e('+'); ?>
 
                             </div>
                             <h4 class="title"><?php echo e('No. of Consultations'); ?></h4>
@@ -217,89 +218,40 @@
             </div>
         </div>
     </div>
-    <section class="faq-area bg-image padding-50">
+    <section class="we-area-experience">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="left-content-area">
-                        <div class="section-title desktop-left tablet-center mobile-center">
-                            <h2 class="title"><?php echo e(get_static_option('home_page_01_faq_area_title')); ?></h2>
-                            <p><?php echo e(get_static_option('home_page_01_faq_area_description')); ?></p>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 margin-top-40">
+                    <?php if(!empty(get_static_option('home_01_key_feature_section_title'))): ?>
+                        <div class="section-title desktop-center">
+                            <h2 class="title"><?php echo e(get_static_option('home_01_key_feature_section_title')); ?></h2>
+                            <?php if(!empty(get_static_option('home_01_key_feature_section_description'))): ?>
+                                <p><?php echo e(get_static_option('home_01_key_feature_section_description')); ?></p>
+                            <?php endif; ?>
                         </div>
-                        <div class="accordion-wrapper">
-                            <?php $rand_number = rand(9999,99999999); ?>
-                            <div id="accordion_<?php echo e($rand_number); ?>">
-                                <?php $__currentLoopData = $all_faq; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php
-                                        $aria_expanded = 'false';
-                                        if ($data->is_open == 'on') {
-                                            $aria_expanded = 'true';
-                                        }
-                                    ?>
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne_<?php echo e($key); ?>">
-                                            <h5 class="mb-0">
-                                                <a data-toggle="collapse" data-target="#collapseOne_<?php echo e($key); ?>"
-                                                    role="button" aria-expanded="<?php echo e($aria_expanded); ?>"
-                                                    aria-controls="collapseOne_<?php echo e($key); ?>">
-                                                    <?php echo e($data->title); ?>
-
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne_<?php echo e($key); ?>" class="collapse <?php if($data->is_open == 'on'): ?> show <?php endif; ?>
-                                            "
-                                            aria-labelledby="headingOne_<?php echo e($key); ?>"
-                                            data-parent="#accordion_<?php echo e($rand_number); ?>">
-                                            <div class="card-body">
-                                                <?php echo e($data->description); ?>
-
-                                            </div>
-                                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="row">
+                <?php $__currentLoopData = $all_key_features; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-4 col-md-6 margin-bottom-50">
+                        <div class="single-experience-item">
+                            <div class="thumb">
+                                <div class="hover">
+                                    <div class="icon">
+                                        <i class="<?php echo e($data->icon); ?>"></i>
                                     </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="content">
+                                        <h4 class="title"><?php echo e($data->title); ?></h4>
+                                        <p><?php echo e($data->description); ?></p>
+                                        <button class="float-right btn btn-colour-1"><a
+                                                href="<?php echo e(route('frontend.dynamic.page', ['id' => $data->id, 'any' => Str::slug($data->title)])); ?>">more..</a></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="right-content-area">
-                        <div class="request-call">
-                            <h4 class="title"><?php echo e(get_static_option('home_page_01_faq_area_form_title')); ?></h4>
-                            <p><?php echo e(get_static_option('home_page_01_faq_area_form_description')); ?></p>
-                            <?php echo $__env->make('backend.partials.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                            <?php if($errors->any()): ?>
-                                <ul class="alert alert-danger">
-                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li><?php echo e($error); ?></li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </ul>
-                            <?php endif; ?>
-                            <form action="<?php echo e(route('frontend.call.back.message')); ?>"
-                                class="request-call-form margin-top-60" enctype="multipart/form-data" method="post">
-                                <?php echo csrf_field(); ?>
-                                <?php
-                                    $form_fields = json_decode(get_static_option('call_back_page_form_fields'));
-                                    $select_index = 0;
-                                    $options = [];
-                                ?>
-                                <?php $__currentLoopData = $form_fields->field_type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if(!empty($value)): ?>
-                                        <?php if($value == 'select'): ?> <?php $options = explode(';',$form_fields->select_options[$select_index]);?>
-                                        <?php endif; ?>
-                                        <?php $required = isset($form_fields->field_required->$key) ? $form_fields->field_required->$key : '' ?>
-                                        <?php $mimes = isset($form_fields->mimes_type->$key) ? $form_fields->mimes_type->$key : '' ?>
-                                        <?php echo get_field_by_type($value, $form_fields->field_name[$key], $form_fields->field_placeholder[$key], $options, $required, $mimes); ?>
-
-                                        <?php if($value == 'select'): ?> <?php $select_index++?>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <button type="submit" class="submit-btn white"><?php echo e('Submit'); ?></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </section>
@@ -335,7 +287,6 @@
                 height: $(window).height() + "px"
             });
         });
-
     </script>
 <?php $__env->stopSection(); ?>
 
